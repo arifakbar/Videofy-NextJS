@@ -36,14 +36,16 @@ export default function Comments({ videoId, initialComments }) {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socketServerUrl =
-      process.env.NODE_ENV === "production"
-        ? process.env.NEXT_PUBLIC_SITE_URL
-        : "http://localhost:3001";
+    // const socketServerUrl =
+    //   process.env.NODE_ENV === "production"
+    //     ? process.env.NEXT_PUBLIC_SITE_URL
+    //     : "http://localhost:3001";
 
     // console.log("socketServerUrl: ", socketServerUrl);
 
-    const newSocket = io(socketServerUrl);
+    const newSocket = io("https://carnation-fluffy-chanter.glitch.me");
+
+    // const newSocket = io(socketServerUrl);
     setSocket(newSocket);
 
     newSocket.on("connect", () => {
